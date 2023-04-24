@@ -21,7 +21,7 @@ export class AdaptiveForm {
         }, "success")
         registerFunctions(customFunctions);
      }
-
+ 
   /**
    * @param {string} id
    */
@@ -38,10 +38,10 @@ export class AdaptiveForm {
         await this.renderChildren(form, state);
         return form;
     }
-  /**
+  /** 
    * @param {HTMLFormElement}  form
    * @param {import("afcore").State<import("afcore").FormJson>} state
-   * */
+   * */  
     renderChildren = async (form, state) => {
         console.time("Rendering childrens")
         let fields = state?.items;
@@ -57,12 +57,12 @@ export class AdaptiveForm {
     }
  }
 
- /**
+ /** 
   * @param {HTMLLinkElement} formLink
   * */
   let createFormContainer = async (placeholder, url) => {
     console.log("Loading & Converting excel form to Crispr Form")
-
+    
     console.time('Json Transformation (including Get)');
     const transform = new ExcelToFormModel();
     const convertedData = await transform.getFormModel(url);
@@ -74,11 +74,11 @@ export class AdaptiveForm {
     window.adaptiveform = adaptiveform;
     let form = await adaptiveform.render();
     placeholder?.replaceWith(form);
-
+    
     console.timeEnd('Form Model Instance Creation');
     return adaptiveform;
   }
-
+  
   /**
    * @param {{ querySelector: (arg0: string) => HTMLLinkElement | null; }} block
    */
